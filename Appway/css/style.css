@@ -21306,3 +21306,69 @@ div#mCSB_1_container{
   }
 }
 
+.theme-btn-two.is-loading,
+.theme-btn-two:disabled{
+  cursor: wait;
+  opacity: 0.88;
+  pointer-events: none;
+}
+
+.button-loader{
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  vertical-align: -3px;
+  animation: buttonSpin 0.75s linear infinite;
+}
+
+.form-transition-message{
+  display: none;
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.form-transition-message.is-loading,
+.form-transition-message.is-success,
+.form-transition-message.is-error{
+  display: block;
+}
+
+.form-transition-message.is-loading{
+  color: #31476c;
+  background: #eef5ff;
+  border: 1px solid #cbdfff;
+}
+
+.form-transition-message.is-success{
+  color: #136943;
+  background: #eafaf3;
+  border: 1px solid #b8ecd4;
+}
+
+.form-transition-message.is-error{
+  color: #a3313e;
+  background: #fff0f2;
+  border: 1px solid #ffd0d7;
+}
+
+.question-form .form-transition-message,
+.contact-form-area .form-transition-message{
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+@keyframes buttonSpin{
+  to{
+    transform: rotate(360deg);
+  }
+}
+

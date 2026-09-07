@@ -8,7 +8,6 @@
   var planName = document.getElementById('checkout-plan');
   var planPrice = document.getElementById('checkout-price');
   var planCycle = document.getElementById('checkout-cycle');
-  var newsletterForm = document.getElementById('newsletter-form');
   var lastFocusedElement = null;
 
   function showMessage(element, type, text) {
@@ -176,20 +175,4 @@
     });
   }
 
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function (event) {
-      event.preventDefault();
-      var emailInput = newsletterForm.querySelector('input[type="email"]');
-      var message = newsletterForm.querySelector('.newsletter-message');
-
-      if (!emailInput.value.trim() || !isValidEmail(emailInput.value.trim())) {
-        showMessage(message, 'error', 'Please enter a valid email address.');
-        emailInput.focus();
-        return;
-      }
-
-      showMessage(message, 'success', 'Thanks. You are subscribed to Print Links updates.');
-      newsletterForm.reset();
-    });
-  }
 })();
