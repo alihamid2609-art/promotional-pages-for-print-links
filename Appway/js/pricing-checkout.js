@@ -1,7 +1,48 @@
 (function () {
   'use strict';
 
-  var overlay = document.getElementById('checkout-overlay');
+  function ensureCheckoutModal() {
+    var existing = document.getElementById('checkout-overlay');
+
+    if (existing || !document.querySelector('.purchase-plan')) {
+      return existing;
+    }
+
+    document.body.insertAdjacentHTML('beforeend',
+      '<div class="checkout-overlay" id="checkout-overlay" aria-hidden="true">' +
+        '<div class="checkout-dialog" role="dialog" aria-modal="true" aria-labelledby="checkout-title">' +
+          '<button type="button" class="checkout-close" id="checkout-close" aria-label="Close checkout">&times;</button>' +
+          '<div class="checkout-grid">' +
+            '<div class="checkout-summary">' +
+              '<div class="checkout-brand"><img src="images/logo-3.png" alt="Print Links"></div>' +
+              '<span class="checkout-kicker">Secure checkout</span>' +
+              '<h3 id="checkout-title">Start your Print Links subscription</h3>' +
+              '<div class="selected-plan-card"><div><span>Selected plan</span><strong id="checkout-plan">Standard</strong></div><div class="selected-price"><strong id="checkout-price">PKR 5,999</strong><span id="checkout-cycle">Monthly</span></div></div>' +
+              '<ul class="checkout-benefits"><li><i class="fa fa-check"></i> Instant account setup after payment</li><li><i class="fa fa-check"></i> Encrypted card details ready for Stripe</li><li><i class="fa fa-check"></i> Cancel or change plan anytime</li></ul>' +
+              '<div class="checkout-secure-note"><i class="fa fa-lock"></i><span>Payment screen preview. No real card is charged yet.</span></div>' +
+            '</div>' +
+            '<form class="checkout-form" id="checkout-form" novalidate>' +
+              '<div class="checkout-step"><span>1</span><h4>Contact details</h4></div>' +
+              '<div class="field-row"><label for="checkout-email">Email address</label><input type="email" id="checkout-email" name="email" placeholder="you@company.com" autocomplete="email" required></div>' +
+              '<div class="field-row"><label for="checkout-name">Name on card</label><input type="text" id="checkout-name" name="name" placeholder="Full name" autocomplete="cc-name" required></div>' +
+              '<div class="checkout-step payment-step"><span>2</span><h4>Card information</h4><div class="card-icons" aria-label="Supported cards"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-amex"></i></div></div>' +
+              '<div class="field-row card-number-field"><label for="checkout-card">Card number</label><input type="text" id="checkout-card" name="card" placeholder="4242 4242 4242 4242" inputmode="numeric" autocomplete="cc-number" maxlength="19" required></div>' +
+              '<div class="checkout-two-col"><div class="field-row"><label for="checkout-expiry">Expiry</label><input type="text" id="checkout-expiry" name="expiry" placeholder="MM / YY" inputmode="numeric" autocomplete="cc-exp" maxlength="7" required></div><div class="field-row"><label for="checkout-cvc">CVC</label><input type="text" id="checkout-cvc" name="cvc" placeholder="123" inputmode="numeric" autocomplete="cc-csc" maxlength="4" required></div></div>' +
+              '<div class="field-row"><label for="checkout-company">Company name</label><input type="text" id="checkout-company" name="company" placeholder="Your printing business" autocomplete="organization"></div>' +
+              '<label class="checkout-checkbox"><input type="checkbox" id="checkout-terms" required><span>I agree to activate this subscription once live payments are connected.</span></label>' +
+              '<button type="submit" class="theme-btn-two checkout-submit"><span>Subscribe Now</span><i class="fa fa-arrow-right"></i></button>' +
+              '<div class="checkout-message" role="status" aria-live="polite"></div>' +
+            '</form>' +
+          '</div>' +
+        '</div>' +
+      '</div>');
+
+    return document.getElementById('checkout-overlay');
+  }
+
+  var overlay = ensureCheckoutModal();
+  if (!overlay) return;
+
   var closeButton = document.getElementById('checkout-close');
   var checkoutForm = document.getElementById('checkout-form');
   var checkoutMessage = checkoutForm ? checkoutForm.querySelector('.checkout-message') : null;

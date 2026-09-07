@@ -164,7 +164,9 @@
             "fa-facebook-f": "https://www.facebook.com/hamid339",
             "fa-facebook-square": "https://www.facebook.com/hamid339",
             "fa-twitter": "https://x.com/hamid339",
+            "fa-twitter-square": "https://x.com/hamid339",
             "fa-linkedin-in": "https://www.linkedin.com/in/hamid339",
+            "fa-linkedin": "https://www.linkedin.com/in/hamid339",
             "fa-instagram": "https://www.instagram.com/hamid339",
             "fa-youtube": "https://www.youtube.com/@hamid339",
             "fa-pinterest-p": "https://www.pinterest.com/hamid339"
@@ -186,12 +188,12 @@
     var includes = Array.prototype.slice.call(document.querySelectorAll("[data-include]"));
 
     Promise.all(includes.map(loadPartial))
+        .catch(function (error) {
+            window.console.error(error);
+        })
         .then(function () {
             initFormTransitions();
             updateSocialLinks();
             loadMainScript();
-        })
-        .catch(function (error) {
-            window.console.error(error);
         });
 }());
