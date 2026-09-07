@@ -615,6 +615,14 @@
     padding: 0px;
   }
 
+  .map-section .location-overview{
+    padding: 45px 35px;
+  }
+
+  .map-section .map-frame{
+    min-height: 520px;
+  }
+
   .management-section .tabs-content .image-box{
     min-height: auto;
   }
@@ -925,6 +933,18 @@
 
   .main-footer.style-six .copyright{
     margin-top: 0px;
+  }
+
+  .map-section{
+    padding-bottom: 80px;
+  }
+
+  .map-section .location-panel{
+    margin-bottom: -90px;
+  }
+
+  .map-section .map-frame{
+    min-height: 420px;
   }
 
   .banner-section{
@@ -3448,6 +3468,24 @@
     margin-bottom: 0px;
   }
 
+  .map-section .location-overview{
+    padding: 36px 26px;
+  }
+
+  .map-section .location-overview h2{
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .map-section .location-actions{
+    display: block;
+  }
+
+  .map-section .location-actions .location-btn{
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
   .banner-style-two .image-box{
     display: none;
   }
@@ -3656,6 +3694,14 @@
  
   .menu-area .btn-box{
     display: none !important;
+  }
+
+  .map-section .map-frame{
+    min-height: 360px;
+  }
+
+  .map-section .location-card{
+    padding: 24px 20px;
   }
 
   #content_block_20 .content-box h1{

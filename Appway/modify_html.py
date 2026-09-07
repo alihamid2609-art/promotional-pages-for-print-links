@@ -1,168 +1,178 @@
-import bs4
+from pathlib import Path
 import re
 
-file_path = r'c:\Users\HamidAli\Downloads\promotional-pages-for-print-links\Appway\index.html'
 
-with open(file_path, 'r', encoding='utf-8') as f:
-    html_content = f.read()
+BASE_DIR = Path(__file__).resolve().parent
 
-soup = bs4.BeautifulSoup(html_content, 'html.parser')
+PAGES = [
+    "index.html",
+    "crm-management.html",
+    "about.html",
+    "account-billing.html",
+    "contact.html",
+    "faq.html",
+    "hr-management.html",
+    "portfolio-2.html",
+    "portfolio-details.html",
+    "pricing.html",
+    "service-details.html",
+    "service.html",
+    "testimonial.html",
+]
 
-# Title
-title_tag = soup.find('title')
-if title_tag:
-    title_tag.string = 'Print Links - Complete Printing Business Management System'
+HEADER_RE = re.compile(
+    r"\n\s*<!-- main header -->.*?</div><!-- End Mobile Menu -->\s*\n",
+    re.DOTALL,
+)
+FOOTER_RE = re.compile(
+    r"\n\s*<!-- main-footer -->.*?<!-- main-footer end -->\s*\n",
+    re.DOTALL,
+)
+SCRIPT_RE = re.compile(
+    r'\n\s*<!-- main-js -->\s*\n\s*<script src="js/script\.js"></script>\s*\n',
+    re.DOTALL,
+)
 
-# Banner Section
-banner_section = soup.find('section', class_='banner-section')
-if banner_section:
-    h1 = banner_section.find('h1')
-    if h1:
-        h1.string = 'All-in-One Printing Business Platform'
-    text = banner_section.find('div', class_='text')
-    if text:
-        text.string = 'Print Links brings printing calculations, clients, pricing, expenses, employees, salaries, suppliers, analytics, reports, earnings and profit management together in one platform.'
-    btn = banner_section.find('a', string=re.compile('.*Get App Now.*'))
-    if btn:
-        btn.string = 'Get Started'
 
-# Feature Section 1
-feature_section = soup.find('section', class_='feature-section')
-if feature_section:
-    sec_title_h2 = feature_section.find('div', class_='sec-title').find('h2')
-    if sec_title_h2:
-        sec_title_h2.string = 'Printing Operations'
-    sec_title_p = feature_section.find('div', class_='sec-title').find('p')
-    if sec_title_p:
-        sec_title_p.string = 'Manage calculations, quantities, jobs, items, materials, and pricing.'
+def read_page(name):
+    return (BASE_DIR / name).read_text(encoding="utf-8")
 
-    features = feature_section.find_all('div', class_='single-item')
-    if len(features) >= 4:
-        features[0].find('h5').find('a').string = 'Printing Calculations'
-        features[0].find('div', class_='text').string = 'Automates the underlying calculation process while keeping the owner\'s workflow simple.'
-        
-        features[1].find('h5').find('a').string = 'Quantity Management'
-        features[1].find('div', class_='text').string = 'Manage required details and let Print Links calculate.'
 
-        features[2].find('h5').find('a').string = 'Items & Materials'
-        features[2].find('div', class_='text').string = 'Keep track of items used and connect relevant information with operations.'
+def write_page(name, content):
+    (BASE_DIR / name).write_text(content, encoding="utf-8")
 
-        features[3].find('h5').find('a').string = 'Pricing & Tiers'
-        features[3].find('div', class_='text').string = 'Organize pricing according to business requirements rather than manual calculations.'
 
-# Feature Style Two
-feature_style_two = soup.find('section', class_='feature-style-two')
-if feature_style_two:
-    features2 = feature_style_two.find_all('div', class_='feature-block-one')
-    if len(features2) >= 3:
-        features2[0].find('h5').find('a').string = 'Business Management'
-        features2[0].find('div', class_='text').string = 'Manage clients, suppliers, employees, salaries, holidays, and expenses.'
-        
-        features2[1].find('h5').find('a').string = 'Financial Visibility'
-        features2[1].find('div', class_='text').string = 'Track daily earnings, daily expenses, and daily profit seamlessly.'
-        
-        features2[2].find('h5').find('a').string = 'Intelligence & Reporting'
-        features2[2].find('div', class_='text').string = 'Understand business performance with analytics and specialized reports.'
+def extract_required(pattern, content, label):
+    match = pattern.search(content)
+    if not match:
+        raise RuntimeError(f"Could not find {label}")
+    return match.group(0).strip()
 
-# Feature Style Three (Mobile Applications Redefined -> Complete Business Ecosystem)
-feature_style_three = soup.find('section', class_='feature-style-three')
-if feature_style_three:
-    inner_boxes = feature_style_three.find_all('div', class_='inner-box')
-    if len(inner_boxes) >= 2:
-        content_box_1 = inner_boxes[0].find('div', class_='content-box')
-        if content_box_1:
-            content_box_1.find('h2').string = 'Complete Business Ecosystem'
-            text_p = content_box_1.find('div', class_='text').find_all('p')
-            if len(text_p) >= 2:
-                text_p[0].string = 'Print Links is a complete management platform built for printing businesses.'
-                text_p[1].string = 'From printing calculations and client management to pricing, items, expenses, employees, salaries, holidays, suppliers, daily earnings, daily profit, analytics and reports, Print Links brings the essential parts of a printing business into one organized system.'
 
-        content_box_2 = inner_boxes[1].find('div', class_='content-box')
-        if content_box_2:
-            content_box_2.find('h2').string = 'Platform Management'
-            text_p2 = content_box_2.find('div', class_='text').find_all('p')
-            if len(text_p2) >= 2:
-                text_p2[0].string = 'Print Links has a role-based system architecture.'
-                text_p2[1].string = 'Dedicated dashboards for the Printing Owner, Suppliers, Admins, and Super Admins allow different users to interact with the platform according to their role.'
+def get_header_settings(header_html):
+    header_match = re.search(r'<header class="([^"]+)"', header_html)
+    logo_match = re.search(
+        r'<figure class="logo"><a href="index\.html"><img src="([^"]+)"',
+        header_html,
+    )
+    menu_area_match = re.search(r'<div class="menu-area([^"]*)"', header_html)
 
-# Video Section
-video_section = soup.find('section', class_='video-section')
-if video_section:
-    content_box = video_section.find('div', class_='content-box')
-    if content_box:
-        content_box.find('h2').string = 'See Print Links in Action'
-        text_div = content_box.find('div', class_='text')
-        if text_div:
-            text_div.string = 'The owner enters the required information, while Print Links handles the calculations, processing and business insights behind the scenes. Less manual work. Better visibility. Smarter printing-business management.'
+    header_class = header_match.group(1) if header_match else "main-header style-four"
+    logo = logo_match.group(1) if logo_match else "images/logo-4.png"
+    menu_area_class = "menu-area" + (menu_area_match.group(1) if menu_area_match else "")
+    return header_class, logo, menu_area_class
 
-# Pricing Section
-pricing_section = soup.find('section', class_='pricing-section')
-if pricing_section:
-    sec_title = pricing_section.find('div', class_='sec-title')
-    if sec_title:
-        sec_title.find('h2').string = 'Pricing Plans'
-        sec_title.find('p').string = 'Choose the right plan for your complete printing business management system.'
-    
-    # Let's just update the monthly tab (tab-1) and yearly tab (tab-2) if we can
-    # The prompt asks for Basic (PKR 2,999), Standard (PKR 5,999), Premium (PKR 9,999).
-    # And to make standard recommended.
-    tabs = pricing_section.find_all('div', class_='tab')
-    for tab in tabs:
-        pricing_blocks = tab.find_all('div', class_='pricing-block-one')
-        if len(pricing_blocks) >= 3:
-            # Plan 1: Basic
-            pricing_blocks[0].find('h3', class_='title').string = 'Basic'
-            pricing_blocks[0].find('h2', class_='price').clear()
-            pricing_blocks[0].find('h2', class_='price').append('2,999')
-            span_mo1 = soup.new_tag('span')
-            span_mo1.string = '/Mo PKR'
-            pricing_blocks[0].find('h2', class_='price').append(span_mo1)
-            
-            ul1 = pricing_blocks[0].find('ul')
-            ul1.clear()
-            for li_text in ['Printing management', 'Client management', 'Items']:
-                li = soup.new_tag('li')
-                li.string = li_text
-                ul1.append(li)
 
-            # Plan 2: Standard (Recommended)
-            pricing_blocks[1].find('h3', class_='title').string = 'Standard'
-            pricing_blocks[1].find('h2', class_='price').clear()
-            pricing_blocks[1].find('h2', class_='price').append('5,999')
-            span_mo2 = soup.new_tag('span')
-            span_mo2.string = '/Mo PKR'
-            pricing_blocks[1].find('h2', class_='price').append(span_mo2)
-            
-            ul2 = pricing_blocks[1].find('ul')
-            ul2.clear()
-            for li_text in ['All Basic features', 'Pricing', 'Expenses', 'Employees & Salaries']:
-                li = soup.new_tag('li')
-                li.string = li_text
-                ul2.append(li)
+def get_footer_settings(footer_html):
+    footer_match = re.search(r'<footer class="([^"]+)"', footer_html)
+    bg_match = re.search(r"background-image:\s*url\(([^)]+)\)", footer_html)
+    logo_match = re.search(
+        r'<figure class="footer-logo"><a href="index\.html"><img src="([^"]+)"',
+        footer_html,
+    )
 
-            # Plan 3: Premium
-            pricing_blocks[2].find('h3', class_='title').string = 'Premium'
-            pricing_blocks[2].find('h2', class_='price').clear()
-            pricing_blocks[2].find('h2', class_='price').append('9,999')
-            span_mo3 = soup.new_tag('span')
-            span_mo3.string = '/Mo PKR'
-            pricing_blocks[2].find('h2', class_='price').append(span_mo3)
-            
-            ul3 = pricing_blocks[2].find('ul')
-            ul3.clear()
-            for li_text in ['All Standard features', 'Analytics & Reports', 'Supplier management', 'Advanced business management']:
-                li = soup.new_tag('li')
-                li.string = li_text
-                ul3.append(li)
+    footer_class = footer_match.group(1) if footer_match else "main-footer style-five style-six"
+    bg = bg_match.group(1) if bg_match else "images/icons/footer-bg-6.png"
+    logo = logo_match.group(1) if logo_match else "images/footer-logo-2.png"
+    return footer_class, bg, logo
 
-# Testimonials Section (Our Users Review -> Business Owners Review)
-testimonial_section = soup.find('section', class_='testimonial-section')
-if testimonial_section:
-    sec_title = testimonial_section.find('div', class_='sec-title')
-    if sec_title:
-        sec_title.find('h2').string = 'Business Owners Review'
-        sec_title.find('p').string = 'Trusted by printing presses to manage their day-to-day operations.'
 
-with open(file_path, 'w', encoding='utf-8') as f:
-    f.write(str(soup))
+def active_menu_for(page_name):
+    if page_name in {"index.html", "account-billing.html", "crm-management.html", "hr-management.html"}:
+        return "home"
+    if page_name == "contact.html":
+        return "contact"
+    return "pages"
 
+
+def make_header_template(header_html):
+    header_html = re.sub(
+        r'<header class="[^"]+"',
+        '<header class="{{HEADER_CLASS}}"',
+        header_html,
+        count=1,
+    )
+    header_html = re.sub(
+        r'(<figure class="logo"><a href="index\.html"><img src=")[^"]+(")',
+        r"\1{{HEADER_LOGO}}\2",
+        header_html,
+        count=1,
+    )
+    header_html = re.sub(
+        r'<div class="menu-area[^"]*"',
+        '<div class="{{MENU_AREA_CLASS}}"',
+        header_html,
+        count=1,
+    )
+    header_html = re.sub(r'<li class="current dropdown"', '<li class="dropdown"', header_html)
+    return header_html + "\n"
+
+
+def make_footer_template(footer_html):
+    footer_html = re.sub(
+        r'<footer class="[^"]+"',
+        '<footer class="{{FOOTER_CLASS}}"',
+        footer_html,
+        count=1,
+    )
+    footer_html = re.sub(
+        r"background-image:\s*url\([^)]+\)",
+        "background-image: url({{FOOTER_BG}})",
+        footer_html,
+        count=1,
+    )
+    footer_html = re.sub(
+        r'(<figure class="footer-logo"><a href="index\.html"><img src=")[^"]+(")',
+        r"\1{{FOOTER_LOGO}}\2",
+        footer_html,
+        count=1,
+    )
+    return footer_html + "\n"
+
+
+def make_header_placeholder(page_name, header_html):
+    header_class, logo, menu_area_class = get_header_settings(header_html)
+    return (
+        "\n    <!-- main header -->\n"
+        f'    <div data-include="header" data-header-class="{header_class}" '
+        f'data-header-logo="{logo}" data-menu-area-class="{menu_area_class}" '
+        f'data-active-menu="{active_menu_for(page_name)}"></div>\n'
+        "    <!-- main-header end -->\n"
+    )
+
+
+def make_footer_placeholder(footer_html):
+    footer_class, bg, logo = get_footer_settings(footer_html)
+    return (
+        "\n    <!-- main-footer -->\n"
+        f'    <div data-include="footer" data-footer-class="{footer_class}" '
+        f'data-footer-bg="{bg}" data-footer-logo="{logo}"></div>\n'
+        "    <!-- main-footer end -->\n"
+    )
+
+
+def main():
+    source_html = read_page("about.html")
+    header_template = make_header_template(extract_required(HEADER_RE, source_html, "header"))
+    footer_template = make_footer_template(extract_required(FOOTER_RE, source_html, "footer"))
+
+    (BASE_DIR / "header.html").write_text(header_template, encoding="utf-8")
+    (BASE_DIR / "footer.html").write_text(footer_template, encoding="utf-8")
+
+    for page_name in PAGES:
+        html = read_page(page_name)
+        original_header = extract_required(HEADER_RE, html, f"{page_name} header")
+        original_footer = extract_required(FOOTER_RE, html, f"{page_name} footer")
+
+        html = HEADER_RE.sub(make_header_placeholder(page_name, original_header), html, count=1)
+        html = FOOTER_RE.sub(make_footer_placeholder(original_footer), html, count=1)
+        html = SCRIPT_RE.sub(
+            '\n<!-- main-js -->\n<script src="js/include-layout.js"></script>\n',
+            html,
+            count=1,
+        )
+        write_page(page_name, html)
+
+
+if __name__ == "__main__":
+    main()
