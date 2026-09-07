@@ -8,7 +8,6 @@ PAGES = [
     "index.html",
     "crm-management.html",
     "about.html",
-    "account-billing.html",
     "contact.html",
     "faq.html",
     "hr-management.html",
@@ -78,7 +77,7 @@ def get_footer_settings(footer_html):
 
 
 def active_menu_for(page_name):
-    if page_name in {"index.html", "account-billing.html", "crm-management.html", "hr-management.html"}:
+    if page_name in {"index.html", "crm-management.html", "hr-management.html"}:
         return "home"
     if page_name == "contact.html":
         return "contact"

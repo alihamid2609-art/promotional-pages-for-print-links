@@ -2822,6 +2822,48 @@ div#mCSB_1_container{
   color: #4527a4;
 }
 
+.main-footer .footer-top .contact-widget .contact-info li{
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #777;
+  overflow-wrap: anywhere;
+}
+
+.main-footer .footer-top .contact-widget .contact-info li i{
+  flex: 0 0 18px;
+  margin-top: 4px;
+  color: #4527a4;
+  text-align: center;
+}
+
+.main-footer .footer-top .contact-widget .contact-info li a{
+  color: #777;
+}
+
+.main-footer .footer-top .contact-widget .social-links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.main-footer .footer-top .contact-widget .social-links li{
+  float: none;
+  margin: 0;
+}
+
+.inline-news-detail{
+  margin: 14px 0 18px;
+  font-size: 15px;
+  line-height: 26px;
+  color: #777;
+}
+
 .main-footer .footer-top .contact-widget .widget-title{
   margin-bottom: 33px;
 }
@@ -21307,7 +21349,9 @@ div#mCSB_1_container{
 }
 
 .theme-btn-two.is-loading,
-.theme-btn-two:disabled{
+.theme-btn-two:disabled,
+.mail-box button.is-loading,
+.mail-box button:disabled{
   cursor: wait;
   opacity: 0.88;
   pointer-events: none;

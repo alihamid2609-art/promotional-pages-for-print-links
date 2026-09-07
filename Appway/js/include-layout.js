@@ -150,6 +150,10 @@
             handleTransitionForm(form, "Thanks. You are subscribed to Print Links updates.");
         });
 
+        document.querySelectorAll(".mail-box form").forEach(function (form) {
+            handleTransitionForm(form, "Thanks. We'll contact you soon to help you start with Print Links.");
+        });
+
         document.querySelectorAll(".question-form form").forEach(function (form) {
             handleTransitionForm(form, "Thanks. Your question has been received. We'll get back to you soon.");
         });
@@ -185,6 +189,49 @@
         });
     }
 
+    function initInlineReadMore() {
+        document.querySelectorAll(".news-block-one").forEach(function (card, index) {
+            var link = card.querySelector(".link-btn a");
+            var titleLink = card.querySelector("h3 a");
+            var imageLink = card.querySelector(".image-box a");
+            var content = [
+                "Print Links helps printing teams manage orders, customers, pricing, expenses, reports, and profit from one organized dashboard.",
+                "Our support keeps your team moving with clearer workflows, practical updates, and simple tools for everyday printing business tasks.",
+                "The platform is built around real print shop needs, so staff can quote jobs, track work, and understand performance without extra complexity."
+            ];
+
+            if (!link) return;
+
+            function expand(event) {
+                var detail = card.querySelector(".inline-news-detail");
+
+                event.preventDefault();
+
+                if (detail) {
+                    detail.remove();
+                    link.textContent = "Read More";
+                    return;
+                }
+
+                detail = document.createElement("p");
+                detail.className = "inline-news-detail";
+                detail.textContent = content[index] || content[0];
+                card.querySelector(".lower-content").insertBefore(detail, card.querySelector(".link-btn"));
+                link.textContent = "Show Less";
+            }
+
+            link.href = "#";
+            link.addEventListener("click", expand);
+
+            [titleLink, imageLink].forEach(function (item) {
+                if (item) {
+                    item.href = "#";
+                    item.addEventListener("click", expand);
+                }
+            });
+        });
+    }
+
     var includes = Array.prototype.slice.call(document.querySelectorAll("[data-include]"));
 
     Promise.all(includes.map(loadPartial))
@@ -193,6 +240,7 @@
         })
         .then(function () {
             initFormTransitions();
+            initInlineReadMore();
             updateSocialLinks();
             loadMainScript();
         });

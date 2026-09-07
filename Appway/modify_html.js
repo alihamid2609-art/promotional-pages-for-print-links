@@ -6,7 +6,6 @@ const pages = [
   "index.html",
   "crm-management.html",
   "about.html",
-  "account-billing.html",
   "contact.html",
   "faq.html",
   "hr-management.html",
@@ -63,7 +62,7 @@ function getFooterSettings(footerHtml) {
 }
 
 function activeMenuFor(pageName) {
-  if (["index.html", "account-billing.html", "crm-management.html", "hr-management.html"].includes(pageName)) {
+  if (["index.html", "crm-management.html", "hr-management.html"].includes(pageName)) {
     return "home";
   }
 
