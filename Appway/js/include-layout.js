@@ -218,9 +218,9 @@
             "daily-profit": "service.html#analytics-reports",
             "financial-reports": "service.html#analytics-reports",
             "analytics-dashboard": "service.html#analytics-reports",
-            "role-based-access": "hr-management.html",
+            "role-based-access": "service.html#roles-permissions",
             "business-insights": "crm-management.html",
-            "complete-ecosystem": "service.html"
+            "complete-ecosystem": "service.html#all-services"
         };
 
         document.querySelectorAll("[data-feature-link]").forEach(function (link) {

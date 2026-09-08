@@ -2126,11 +2126,11 @@
     padding-top: 30px;
   }
 
-  .service-details .service-sidebar{
+  .service-showcase .service-sidebar{
     margin: 0px 0px 30px 0px;
   }
 
-  .service-details .service-details-content .two-column{
+  .service-showcase .service-showcase-content .two-column{
     margin-bottom: 30px;
   }
 
@@ -2138,8 +2138,12 @@
     margin-bottom: 30px;
   }
 
-  .service-details .service-details-content .two-column .content-box{
+  .service-showcase .service-showcase-content .two-column .content-box{
     margin-bottom: 30px;
+  }
+
+  .service-showcase .service-showcase-content .service-summary{
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .our-history .image-box{
@@ -2235,10 +2239,14 @@
     line-height: 35px;
   }
 
-  .service-details,
+  .service-showcase,
   .pricing-style-four.paricing-page-3,
   .portfolio-details{
     padding: 70px 0px;
+  }
+
+  .service-showcase .service-showcase-content .service-summary{
+    grid-template-columns: 1fr;
   }
 
   .team-block-two .image-box{

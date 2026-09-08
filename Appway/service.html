@@ -159,7 +159,7 @@
                     </div>
                     <div class="single-item">
                         <div class="inner-box">
-                            <h3><a href="hr-management.html">Role-Based Access</a></h3>
+                            <h3><a href="service.html#roles-permissions">Role-Based Access</a></h3>
                             <div class="text">Dedicated dashboards for Owners, Suppliers, Admins, and Super Admins according to their role.</div>
                             <figure class="image-box"><img src="images/resource/vactor-image-8.png" alt="Role-Based Access"></figure>
                         </div>
@@ -171,8 +171,8 @@
     <!-- designe-process-three end -->
 
 
-    <!-- service-details -->
-    <section class="service-details" id="all-services">
+    <!-- services content -->
+    <section class="service-showcase" id="all-services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
@@ -189,13 +189,16 @@
                                 <li><a href="#expenses-tracking" data-service="expenses-tracking">Expenses Tracking</a></li>
                                 <li><a href="#analytics-reports" data-service="analytics-reports">Analytics & Reports</a></li>
                                 <li><a href="#employees-salaries" data-service="employees-salaries">Employees & Salaries</a></li>
+                                <li><a href="#hr-management" data-service="hr-management">HR Management</a></li>
+                                <li><a href="#roles-permissions" data-service="roles-permissions">Roles & Permissions</a></li>
                                 <li><a href="#supplier-management" data-service="supplier-management">Supplier Management</a></li>
+                                <li><a href="#portfolio-workflows" data-service="portfolio-workflows">Portfolio / Work Showcase</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-12 col-sm-12 content-side">
-                    <div class="service-details-content">
+                    <div class="service-showcase-content">
                         <div class="inner-box">
                             <div class="top-content">
                                 <div class="sec-title">
@@ -238,6 +241,7 @@
                                     <li>Complete business management integration</li>
                                     <li>Real-time analytics and reporting</li>
                                 </ul>
+                                <div class="service-summary" id="service-summary"></div>
                             </div>
                         </div>
                     </div>
@@ -245,7 +249,7 @@
             </div>
         </div>
     </section>
-    <!-- service-details end -->
+    <!-- services content end -->
 
     <!-- subscribe-style-five -->
     <section class="subscribe-style-five">
@@ -284,10 +288,10 @@
         <div class="image-layer" style="background-image: url(images/icons/layer-image-7.png);"></div>
         <div class="container">
             <div class="clients-carousel owl-carousel owl-theme owl-dots-none">
-                <figure class="image-box"><a href="portfolio-2.html"><img src="images/clients/client-1.png" alt=""></a></figure>
-                <figure class="image-box"><a href="portfolio-2.html"><img src="images/clients/client-2.png" alt=""></a></figure>
-                <figure class="image-box"><a href="portfolio-2.html"><img src="images/clients/client-3.png" alt=""></a></figure>
-                <figure class="image-box"><a href="portfolio-2.html"><img src="images/clients/client-4.png" alt=""></a></figure>
+                <figure class="image-box"><a href="service.html#portfolio-workflows"><img src="images/clients/client-1.png" alt=""></a></figure>
+                <figure class="image-box"><a href="service.html#portfolio-workflows"><img src="images/clients/client-2.png" alt=""></a></figure>
+                <figure class="image-box"><a href="service.html#portfolio-workflows"><img src="images/clients/client-3.png" alt=""></a></figure>
+                <figure class="image-box"><a href="service.html#portfolio-workflows"><img src="images/clients/client-4.png" alt=""></a></figure>
             </div>
         </div>
     </section>
@@ -384,6 +388,11 @@
                 'Expense, salary, and employee tracking',
                 'Daily earnings, profit, analytics, and reports',
                 'Centralized business visibility'
+            ],
+            stats: [
+                ['Core areas', '9'],
+                ['Dashboards', 'Owner / Admin'],
+                ['Business view', 'Complete']
             ]
         },
         'printing-calculations': {
@@ -416,6 +425,11 @@
                 'Flexible pricing tiers organization',
                 'Complete business management integration',
                 'Real-time analytics and reporting'
+            ],
+            stats: [
+                ['Inputs', 'Quantity + details'],
+                ['Output', 'Cost / price view'],
+                ['Best for', 'Fast job estimates']
             ]
         },
         'client-management': {
@@ -448,6 +462,11 @@
                 'Connected pricing and calculation workflow',
                 'Improved customer follow-up',
                 'Cleaner business records'
+            ],
+            stats: [
+                ['Records', 'Clients'],
+                ['Linked data', 'Jobs + pricing'],
+                ['Benefit', 'Faster follow-up']
             ]
         },
         'items-materials': {
@@ -480,6 +499,11 @@
                 'Cleaner inventory organization',
                 'Reduced manual lookup',
                 'Improved cost awareness'
+            ],
+            stats: [
+                ['Tracks', 'Items + materials'],
+                ['Used in', 'Calculations'],
+                ['Benefit', 'Cost awareness']
             ]
         },
         'pricing-tiers': {
@@ -512,6 +536,11 @@
                 'Easier pricing updates',
                 'Improved margin control',
                 'More consistent customer quotes'
+            ],
+            stats: [
+                ['Pricing mode', 'Tier based'],
+                ['Supports', 'Quotes'],
+                ['Goal', 'Margin control']
             ]
         },
         'expenses-tracking': {
@@ -519,18 +548,18 @@
             pageSubtitle: 'Record daily expenses and understand business costs.',
             mainTitle: 'Daily Expenses Tracking',
             intro: [
-                'Print Links gives printing business owners a simple way to record expenses and see where money is being spent.',
-                'Tracking expenses consistently helps the business understand profit more clearly and make better daily decisions.'
+                'Print Links gives printing business owners a simple way to record expenses and see where money is being spent across paper, ink, plates, maintenance, transport, salaries, rent, utilities, and other daily costs.',
+                'Tracking expenses consistently helps the business understand real profit more clearly, compare cost categories, and make better daily decisions before small leaks become big losses.'
             ],
             mainImage: 'images/resource/dashbord-5.jpg',
             mainImageAlt: 'Expenses Tracking',
             howTitle: 'How Expenses Tracking Works',
             howText: [
-                'Add expense entries as they happen and keep them connected with daily business activity.',
-                'When expenses are organized, reports and profit views become more useful because the owner can compare earnings against real costs.'
+                'Add expense entries as they happen, assign them to useful categories, and keep them connected with daily business activity.',
+                'When expenses are organized, reports and profit views become more useful because the owner can compare earnings against real costs and understand which departments, jobs, or materials are affecting margins.'
             ],
             featureTitle: 'Daily Cost Records',
-            featureText: 'Track regular business costs, operational expenses, and other spending in one place for cleaner financial visibility.',
+            featureText: 'Track regular business costs, operational expenses, vendor payments, salary-related expenses, and one-time spending in one place for cleaner financial visibility.',
             sideImage: 'images/resource/dashbord-10.jpg',
             sideImageAlt: 'Daily cost records',
             bottomTitle: 'Clearer Profit Picture',
@@ -540,10 +569,17 @@
             benefits: [
                 'Daily expense entry',
                 'Organized cost categories',
+                'Supplier and vendor payment visibility',
+                'Salary and operational cost tracking',
                 'Better profit visibility',
                 'Connected business reporting',
                 'Reduced missing expense records',
                 'Cleaner financial tracking'
+            ],
+            stats: [
+                ['Tracks', 'Daily costs'],
+                ['Connects', 'Profit reports'],
+                ['Categories', 'Materials / salary / bills']
             ]
         },
         'analytics-reports': {
@@ -551,18 +587,18 @@
             pageSubtitle: 'Understand earnings, expenses, profit, and performance.',
             mainTitle: 'Analytics & Business Reports',
             intro: [
-                'Print Links turns daily business data into useful reports so owners can understand what is happening across the printing business.',
-                'View earnings, expenses, profit, clients, suppliers, and operational trends with better clarity.'
+                'Print Links turns daily business data into useful reports so owners can understand what is happening across orders, clients, suppliers, expenses, employees, pricing, and profit.',
+                'View earnings, expenses, daily profit, client activity, supplier spending, staff costs, and operational trends with better clarity.'
             ],
             mainImage: 'images/resource/dashbord-21.jpg',
             mainImageAlt: 'Analytics and Reports',
             howTitle: 'How Analytics & Reports Work',
             howText: [
                 'As the business uses Print Links for calculations, clients, pricing, expenses, employees, and suppliers, the system can present that information in reports.',
-                'These insights help owners spot patterns, review performance, and make decisions based on organized data.'
+                'These insights help owners spot patterns, review performance, identify strong service categories, compare busy and slow periods, and make decisions based on organized data.'
             ],
             featureTitle: 'Business Performance Views',
-            featureText: 'Review key numbers such as daily earnings, daily expenses, profit, customer activity, and overall business performance.',
+            featureText: 'Review key numbers such as daily earnings, daily expenses, profit, customer activity, supplier costs, salary impact, and overall business performance.',
             sideImage: 'images/resource/dashbord-22.jpg',
             sideImageAlt: 'Business performance reports',
             bottomTitle: 'Smarter Decisions',
@@ -573,9 +609,16 @@
                 'Daily earnings reporting',
                 'Daily expense and profit views',
                 'Client and supplier insights',
+                'Portfolio and service performance overview',
+                'Role-aware reporting for owners and admins',
                 'Performance trend visibility',
                 'Connected business data',
                 'Better decision support'
+            ],
+            stats: [
+                ['Reports', 'Earnings + profit'],
+                ['Views', 'Client / supplier / staff'],
+                ['Use', 'Decision support']
             ]
         },
         'employees-salaries': {
@@ -583,18 +626,18 @@
             pageSubtitle: 'Manage staff details, salaries, and holidays.',
             mainTitle: 'Employees & Salaries Management',
             intro: [
-                'Print Links helps owners keep employee information, salaries, and holiday records organized inside the same platform used for the rest of the business.',
-                'This makes staff management easier to handle alongside expenses, profit, and daily operations.'
+                'Print Links helps owners keep employee information, salaries, holidays, roles, attendance notes, and payment records organized inside the same platform used for the rest of the business.',
+                'This makes staff management easier to handle alongside expenses, profit, permissions, and daily printing operations.'
             ],
             mainImage: 'images/resource/team-4.png',
             mainImageAlt: 'Employees and Salaries',
             howTitle: 'How Employees & Salaries Work',
             howText: [
                 'Maintain staff records and salary details in a central place, then use those records to support expense and business management workflows.',
-                'Clear employee records help owners keep track of responsibilities, payments, and related business information.'
+                'Clear employee records help owners keep track of responsibilities, payments, holidays, access level, and related business information without mixing staff data into spreadsheets.'
             ],
             featureTitle: 'Staff & Salary Records',
-            featureText: 'Keep employee details, salary information, and holiday records organized so payroll-related management is easier to review.',
+            featureText: 'Keep employee details, salary information, role assignments, permissions notes, and holiday records organized so payroll-related management is easier to review.',
             sideImage: 'images/resource/team-5.png',
             sideImageAlt: 'Staff and salary records',
             bottomTitle: 'Organized Team Management',
@@ -605,9 +648,90 @@
                 'Employee profile management',
                 'Salary record organization',
                 'Holiday tracking support',
+                'Role and responsibility records',
+                'Salary costs connected with expenses',
                 'Connected expense visibility',
                 'Cleaner staff records',
                 'Centralized business control'
+            ],
+            stats: [
+                ['Tracks', 'Employees'],
+                ['Costs', 'Salaries'],
+                ['Includes', 'Holidays + roles']
+            ]
+        },
+        'hr-management': {
+            pageTitle: 'HR Management',
+            pageSubtitle: 'Manage people, roles, holidays, and salary operations together.',
+            mainTitle: 'HR Management for Printing Teams',
+            intro: [
+                'Print Links gives printing businesses a practical HR area for employees, salaries, holidays, responsibilities, and staff-related costs.',
+                'Owners can keep team information close to business operations, so HR activity is not separated from expenses, profit, and daily production work.'
+            ],
+            mainImage: 'images/resource/team-6.png',
+            mainImageAlt: 'HR Management',
+            howTitle: 'How HR Management Works',
+            howText: [
+                'Create employee records, assign responsibility areas, record salary information, and keep holiday details in one organized system.',
+                'Because HR data lives beside expenses and reports, owners can understand how team costs affect daily business performance.'
+            ],
+            featureTitle: 'People Operations Control',
+            featureText: 'Manage staff data, salary records, holidays, role notes, and admin responsibilities without losing visibility across the wider printing business.',
+            sideImage: 'images/resource/team-7.png',
+            sideImageAlt: 'People operations control',
+            bottomTitle: 'HR Connected With Business Reports',
+            bottomText: [
+                'Staff records become more useful when salary costs and responsibilities connect with analytics, expenses, and role-based dashboards.'
+            ],
+            benefits: [
+                'Employee profiles and staff records',
+                'Salary and payroll information',
+                'Holiday management',
+                'Role and responsibility tracking',
+                'Staff costs connected with expenses',
+                'Owner and admin visibility'
+            ],
+            stats: [
+                ['People data', 'Staff records'],
+                ['Controls', 'Roles + holidays'],
+                ['Linked with', 'Expenses']
+            ]
+        },
+        'roles-permissions': {
+            pageTitle: 'Roles & Permissions',
+            pageSubtitle: 'Control what owners, admins, staff, and suppliers can access.',
+            mainTitle: 'Role-Based Access & Permissions',
+            intro: [
+                'Print Links supports role-based access so each user sees the tools and information that match their responsibility.',
+                'Owners can keep sensitive business areas protected while allowing admins, employees, suppliers, and super admins to work with the sections they need.'
+            ],
+            mainImage: 'images/resource/enterprise-4.png',
+            mainImageAlt: 'Roles and Permissions',
+            howTitle: 'How Roles & Permissions Work',
+            howText: [
+                'Define access around real business responsibilities such as owner control, admin management, supplier activity, employee tasks, reports, pricing, and expenses.',
+                'This keeps important business data safer and makes the dashboard simpler for every role because users do not need to see unrelated sections.'
+            ],
+            featureTitle: 'Permission-Aware Dashboards',
+            featureText: 'Give owners full control, admins operational tools, suppliers relevant information, and employees focused access based on their daily responsibilities.',
+            sideImage: 'images/resource/enterprise-3.png',
+            sideImageAlt: 'Permission-aware dashboards',
+            bottomTitle: 'Cleaner Access Control',
+            bottomText: [
+                'Role-based permissions reduce mistakes, protect sensitive pricing and profit data, and help each team member work from the right view.'
+            ],
+            benefits: [
+                'Owner, admin, employee, supplier, and super admin roles',
+                'Protected pricing and financial data',
+                'Permission-based dashboard views',
+                'Cleaner staff workflows',
+                'Reduced accidental changes',
+                'Better control for growing teams'
+            ],
+            stats: [
+                ['Roles', '5 user types'],
+                ['Protects', 'Pricing + reports'],
+                ['Access', 'Permission based']
             ]
         },
         'supplier-management': {
@@ -615,18 +739,18 @@
             pageSubtitle: 'Keep supplier details and purchasing activity organized.',
             mainTitle: 'Supplier Management',
             intro: [
-                'Print Links helps printing businesses manage supplier records and keep important vendor information easy to access.',
-                'With supplier data organized, owners can better understand purchasing, material sources, and supplier relationships.'
+                'Print Links helps printing businesses manage supplier records, contact details, purchasing notes, material sources, and vendor-related expenses in one place.',
+                'With supplier data organized, owners can better understand purchasing patterns, material availability, outstanding coordination, and supplier relationships.'
             ],
             mainImage: 'images/resource/illustration-33.png',
             mainImageAlt: 'Supplier Management',
             howTitle: 'How Supplier Management Works',
             howText: [
                 'Add supplier profiles and use them alongside item, material, expense, and business reporting workflows.',
-                'Supplier management gives owners a clearer view of who they buy from and how supplier activity connects with business costs.'
+                'Supplier management gives owners a clearer view of who they buy from, what each supplier provides, and how supplier activity connects with materials, job costs, and business expenses.'
             ],
             featureTitle: 'Supplier Profiles',
-            featureText: 'Keep vendor names, contact information, notes, and related purchasing details organized for quick review.',
+            featureText: 'Keep vendor names, contact information, notes, material categories, payment references, and related purchasing details organized for quick review.',
             sideImage: 'images/resource/illustration-34.png',
             sideImageAlt: 'Supplier profiles',
             bottomTitle: 'Better Vendor Control',
@@ -637,28 +761,82 @@
                 'Centralized supplier records',
                 'Faster vendor information access',
                 'Connected items and materials workflow',
+                'Supplier costs connected with expenses',
+                'Material source visibility',
                 'Expense and purchasing visibility',
                 'Cleaner supplier communication records',
                 'Improved business organization'
+            ],
+            stats: [
+                ['Tracks', 'Suppliers'],
+                ['Connects', 'Materials + expenses'],
+                ['Benefit', 'Vendor control']
+            ]
+        },
+        'portfolio-workflows': {
+            pageTitle: 'Portfolio / Work Showcase',
+            pageSubtitle: 'Organize completed work, service examples, and business proof.',
+            mainTitle: 'Portfolio & Printing Work Showcase',
+            intro: [
+                'Print Links can support portfolio-style business visibility by keeping service examples, completed work categories, and printing capabilities easier to present.',
+                'A printing business can use organized work examples to show customers what it offers, connect services with real outcomes, and build trust during sales conversations.'
+            ],
+            mainImage: 'images/gallery/portfolio-single-1.jpg',
+            mainImageAlt: 'Portfolio work showcase',
+            howTitle: 'How Portfolio Workflows Help',
+            howText: [
+                'Group completed work by service type, customer need, material, or printing category so your team can quickly reference examples.',
+                'Portfolio data can support service pages, proposals, sales discussions, and internal review of which work types are most common or profitable.'
+            ],
+            featureTitle: 'Service Examples & Case Views',
+            featureText: 'Showcase printing calculations, materials, pricing examples, client outcomes, and finished work categories from one organized service area.',
+            sideImage: 'images/gallery/portfolio-single-4.jpg',
+            sideImageAlt: 'Service examples and case views',
+            bottomTitle: 'Better Sales Support',
+            bottomText: [
+                'When portfolio examples are connected with services and analytics, the business can present work more confidently and understand which services attract the most attention.'
+            ],
+            benefits: [
+                'Completed work examples',
+                'Service and category showcase',
+                'Portfolio support for sales conversations',
+                'Client-ready proof of work',
+                'Connection with analytics and service performance',
+                'Better presentation of printing capabilities'
+            ],
+            stats: [
+                ['Shows', 'Completed work'],
+                ['Supports', 'Sales'],
+                ['Connects', 'Services + analytics']
             ]
         }
     };
 
     function renderParagraphs(target, paragraphs) {
+        if (!target) return;
         target.innerHTML = paragraphs.map(function (text) {
             return '<p>' + text + '</p>';
         }).join('');
     }
 
     function renderList(target, items) {
+        if (!target) return;
         target.innerHTML = items.map(function (item) {
             return '<li>' + item + '</li>';
         }).join('');
     }
 
+    function renderStats(target, stats) {
+        if (!target) return;
+        target.innerHTML = stats.map(function (item) {
+            return '<div class="summary-item"><span>' + item[0] + '</span><strong>' + item[1] + '</strong></div>';
+        }).join('');
+    }
+
     function showService(serviceKey, updateHash) {
-        var content = serviceContent[serviceKey] || serviceContent['printing-calculations'];
-        var activeKey = serviceContent[serviceKey] ? serviceKey : 'printing-calculations';
+        var content = serviceContent[serviceKey] || serviceContent['all-services'];
+        var activeKey = serviceContent[serviceKey] ? serviceKey : 'all-services';
+        var detailsContent = document.querySelector('.service-showcase-content');
 
         document.getElementById('service-page-title').textContent = content.pageTitle;
         document.getElementById('service-page-subtitle').textContent = content.pageSubtitle;
@@ -675,6 +853,7 @@
         document.getElementById('service-bottom-title').textContent = content.bottomTitle;
         renderParagraphs(document.getElementById('service-bottom-text'), content.bottomText);
         renderList(document.getElementById('service-benefits'), content.benefits);
+        renderStats(document.getElementById('service-summary'), content.stats);
         document.title = 'Print Links - ' + content.pageTitle + ' | Services';
 
         document.querySelectorAll('#service-list li').forEach(function (item) {
@@ -688,8 +867,29 @@
 
         if (updateHash) {
             history.pushState(null, '', '#' + activeKey);
+            if (detailsContent) {
+                detailsContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
     }
+
+    document.addEventListener('click', function (event) {
+        var link = event.target.closest('a[data-service], a[href*="service.html#"], a[href^="#"]');
+        var serviceKey;
+
+        if (!link) return;
+
+        serviceKey = link.getAttribute('data-service');
+
+        if (!serviceKey && link.getAttribute('href')) {
+            serviceKey = link.getAttribute('href').split('#')[1];
+        }
+
+        if (!serviceContent[serviceKey]) return;
+
+        event.preventDefault();
+        showService(serviceKey, true);
+    });
 
     document.querySelectorAll('#service-list a[data-service]').forEach(function (link) {
         link.addEventListener('click', function (event) {
@@ -698,13 +898,11 @@
         });
     });
 
-    var initialService = window.location.hash.replace('#', '');
-    if (initialService) {
-        showService(initialService, false);
-    }
+    var initialService = window.location.hash.replace('#', '') || 'all-services';
+    showService(initialService, false);
 
     window.addEventListener('hashchange', function () {
-        showService(window.location.hash.replace('#', '') || 'printing-calculations', false);
+        showService(window.location.hash.replace('#', '') || 'all-services', false);
     });
 })();
 </script>
