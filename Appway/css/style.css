@@ -1512,6 +1512,15 @@ div#mCSB_1_container{
   box-shadow: 5px 15px 27px rgba(0, 0, 0, 0.2);
 }
 
+#iamge_block_01 .home-feature-photo{
+  display: block;
+  width: 330px;
+  height: 430px;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
 #content_block_01 .content-box{
   position: relative;
   display: block;
@@ -1845,6 +1854,13 @@ div#mCSB_1_container{
   position: absolute;
   top: 200px;
   left: 70px;
+}
+
+.home-platform-photo{
+  display: block;
+  width: 370px;
+  height: 285px;
+  object-fit: cover;
 }
 
 #iamge_block_02 .image,
@@ -2353,6 +2369,8 @@ div#mCSB_1_container{
 .testimonial-section .testimonial-block .inner-box .image-box img{
   position: relative;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 50%;
 }
 
@@ -2530,6 +2548,13 @@ div#mCSB_1_container{
   bottom: 0px;
 }
 
+.home-download-photo{
+  display: block;
+  width: 260px;
+  height: 360px;
+  object-fit: cover;
+}
+
 
 /** news-section **/
 
@@ -2554,6 +2579,8 @@ div#mCSB_1_container{
 
 .news-block-one .inner-box .image-box img{
   width: 100%;
+  height: 220px;
+  object-fit: cover;
   transition: all 500ms ease;
 }
 
