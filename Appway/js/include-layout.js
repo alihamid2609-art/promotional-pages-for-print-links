@@ -189,6 +189,49 @@
         });
     }
 
+    function initSafePlaceholderLinks() {
+        document.querySelectorAll('a[href="#"]').forEach(function (link) {
+            if (link.classList.contains("purchase-plan") || link.classList.contains("close-side-widget")) {
+                return;
+            }
+
+            if (link.closest(".clients-carousel") || link.closest(".copyright") || link.classList.contains("app-store-btn") || link.classList.contains("google-play-btn")) {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                });
+            }
+        });
+    }
+
+    function initFeatureLinks() {
+        var links = {
+            "printing-calculations": "service-details.html#printing-calculations",
+            "client-management": "service-details.html#client-management",
+            "items-materials": "service-details.html#items-materials",
+            "quantity-management": "service-details.html#all-services",
+            "pricing-tiers": "service-details.html#pricing-tiers",
+            "expenses-tracking": "service-details.html#expenses-tracking",
+            "employees-salaries": "service-details.html#employees-salaries",
+            "holiday-management": "hr-management.html",
+            "supplier-management": "service-details.html#supplier-management",
+            "daily-earnings": "service-details.html#expenses-tracking",
+            "daily-profit": "service-details.html#analytics-reports",
+            "financial-reports": "service-details.html#analytics-reports",
+            "analytics-dashboard": "service-details.html#analytics-reports",
+            "role-based-access": "hr-management.html",
+            "business-insights": "crm-management.html",
+            "complete-ecosystem": "service.html"
+        };
+
+        document.querySelectorAll("[data-feature-link]").forEach(function (link) {
+            var key = link.getAttribute("data-feature-link");
+
+            if (links[key]) {
+                link.href = links[key];
+            }
+        });
+    }
+
     function initInlineReadMore() {
         document.querySelectorAll(".news-block-one").forEach(function (card, index) {
             var link = card.querySelector(".link-btn a");
@@ -240,6 +283,8 @@
         })
         .then(function () {
             initFormTransitions();
+            initFeatureLinks();
+            initSafePlaceholderLinks();
             initInlineReadMore();
             updateSocialLinks();
             loadMainScript();

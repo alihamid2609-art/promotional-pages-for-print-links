@@ -5,7 +5,7 @@
 	//Hide Loading Box (Preloader)
 	function handlePreloader() {
 		if($('.preloader').length){
-			$('.preloader').delay(200).fadeOut(500);
+			$('.preloader').hide().remove();
 		}
 	}
 	
@@ -710,6 +710,7 @@
 	jQuery(document).on('ready', function () {
 		(function ($) {
 			// add your functions
+			handlePreloader();
 			progressBarConfig ();
 			selectDropdown();
 			donatepopup();
