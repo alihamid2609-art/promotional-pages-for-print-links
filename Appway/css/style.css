@@ -20966,6 +20966,42 @@ div#mCSB_1_container{
   width: 100%;
 }
 
+.service-showcase .service-showcase-content .service-main-media{
+  width: 88%;
+  max-width: 680px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.service-showcase .service-showcase-content .service-main-media img{
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+}
+
+.service-showcase .service-showcase-content .service-media-video{
+  position: relative;
+  display: block;
+  width: 88%;
+  max-width: 680px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 60px;
+}
+
+.service-showcase .service-showcase-content .service-media-video h3{
+  margin-bottom: 20px;
+}
+
+.service-showcase .service-showcase-content .service-media-video video{
+  display: block;
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  background: #171717;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
 .service-showcase .service-showcase-content .inner-box h3{
   position: relative;
   display: block;

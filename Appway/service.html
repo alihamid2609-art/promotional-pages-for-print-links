@@ -208,7 +208,13 @@
                                     <p>Print Links automates the underlying calculation process while keeping the owner's workflow simple. Enter quantity and required details, and Print Links handles the rest. No more manual calculations, no more errors.</p>
                                     <p>Whether you are calculating printing costs, job quantities, or material requirements, Print Links ensures accuracy and efficiency every time.</p>
                                 </div>
-                                <figure class="image-box"><img id="service-main-image" src="images/resource/service-details-1.jpg" alt="Printing Calculations"></figure>
+                                <figure class="image-box service-main-media"><img id="service-main-image" src="images/resource/service-details-1.jpg" alt="Printing Calculations"></figure>
+                                <div class="service-media-video">
+                                    <h3>Printing Work in Action</h3>
+                                    <video id="service-video" controls preload="metadata">
+                                        <source id="service-video-source" src="images/videos/prin1.mp4" type="video/mp4">
+                                    </video>
+                                </div>
                                 <h3 id="service-how-title">How Printing Calculations Work</h3>
                                 <div class="text" id="service-how-text">
                                     <p>Print Links simplifies the entire printing calculation process. The owner enters the required information, while Print Links handles the calculations, processing and business insights behind the scenes. Less manual work. Better visibility. Smarter printing-business management.</p>
@@ -812,6 +818,21 @@
         }
     };
 
+    var serviceMedia = {
+        'all-services': { image: 'images/new-added/pic.jpg', video: 'images/videos/pic13.mp4', alt: 'Print Links printing services' },
+        'printing-calculations': { image: 'images/new-added/pic1.jpg', video: 'images/videos/prin1.mp4', alt: 'Printing calculations in a print shop' },
+        'client-management': { image: 'images/new-added/pic2.jpg', video: 'images/videos/prin2.mp4', alt: 'Print shop client work' },
+        'items-materials': { image: 'images/new-added/pic3.jpg', video: 'images/videos/prin3.mp4', alt: 'Printing materials and equipment' },
+        'pricing-tiers': { image: 'images/new-added/pic4.jpg', video: 'images/videos/prin4.mp4', alt: 'Printing production workflow' },
+        'expenses-tracking': { image: 'images/new-added/pic5.jpg', video: 'images/videos/prin5.mp4', alt: 'Print shop production costs' },
+        'analytics-reports': { image: 'images/new-added/pic7.jpg', video: 'images/videos/print.mp4', alt: 'Printing business production' },
+        'employees-salaries': { image: 'images/new-added/pic8.jpg', video: 'images/videos/print6.mp4', alt: 'Printing team at work' },
+        'hr-management': { image: 'images/new-added/pic9.jpg', video: 'images/videos/print7.mp4', alt: 'Print shop team and equipment' },
+        'roles-permissions': { image: 'images/new-added/pic10.jpg', video: 'images/videos/print8.mp4', alt: 'Managed printing workflow' },
+        'supplier-management': { image: 'images/new-added/pic11.jpg', video: 'images/videos/print9.mp4', alt: 'Printing supplier and materials' },
+        'portfolio-workflows': { image: 'images/new-added/pic12.jpg', video: 'images/videos/print10.mp4', alt: 'Finished printing work' }
+    };
+
     function renderParagraphs(target, paragraphs) {
         if (!target) return;
         target.innerHTML = paragraphs.map(function (text) {
@@ -842,8 +863,13 @@
         document.getElementById('service-page-subtitle').textContent = content.pageSubtitle;
         document.getElementById('service-main-title').textContent = content.mainTitle;
         renderParagraphs(document.getElementById('service-intro'), content.intro);
-        document.getElementById('service-main-image').src = content.mainImage;
-        document.getElementById('service-main-image').alt = content.mainImageAlt;
+        var media = serviceMedia[activeKey] || serviceMedia['all-services'];
+        var serviceVideo = document.getElementById('service-video');
+        var serviceVideoSource = document.getElementById('service-video-source');
+        document.getElementById('service-main-image').src = media.image;
+        document.getElementById('service-main-image').alt = media.alt;
+        serviceVideoSource.src = media.video;
+        serviceVideo.load();
         document.getElementById('service-how-title').textContent = content.howTitle;
         renderParagraphs(document.getElementById('service-how-text'), content.howText);
         document.getElementById('service-feature-title').textContent = content.featureTitle;
