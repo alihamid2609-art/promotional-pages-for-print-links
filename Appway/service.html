@@ -891,13 +891,6 @@
         showService(serviceKey, true);
     });
 
-    document.querySelectorAll('#service-list a[data-service]').forEach(function (link) {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            showService(link.getAttribute('data-service'), true);
-        });
-    });
-
     var initialService = window.location.hash.replace('#', '') || 'all-services';
     showService(initialService, false);
 
